@@ -39,7 +39,7 @@ const page = () => {
             }
       }
       useEffect(()=>{
-        if(user.username.length > 0 && user.email.length >0 && user.password.length > 0){
+        if([user.username,user.email,user.password].every((field)=>field.trim() !== "" )){
             setButtonDisabled(false)
         }else{
             setButtonDisabled(true)

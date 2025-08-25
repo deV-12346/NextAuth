@@ -14,12 +14,14 @@ const page = () => {
     try {
       await axios.post("/api/users/verify",{token})
       setVerified(true)
+      setError(false)
     } catch (error:any) {
       setError(true)
       console.log(error.message)
     }
   }
   useEffect(()=>{
+    setError(false)
     const tokenUrl = window.location.search.split("=")[1]
     setToken(tokenUrl || "")
     console.log(tokenUrl)
@@ -28,6 +30,7 @@ const page = () => {
     // console.log(tokenurl)
   },[])
   useEffect(()=>{
+    setError(false)
     if(token.length>0){
     verifyEmail()
     }
@@ -36,7 +39,7 @@ const page = () => {
     <div className='flex justify-center items-center h-screen'>
       <div className='h-70 w-220 bg-indigo-100 rounded px-10 py-5'>
          <h1 className='text-3xl text-center'>Verify Email</h1>
-          <h2  className='text-xl  max-w-[600px] mx-auto bg-red-400 break-words'>{token}</h2>
+          <h2  className='text-xl  max-w-[600px] mx-auto bg-red-400 break-words'>{token || "No Token"}</h2>
           {
             isVerified &&
              (<div className=' flex flex-col justify-center items-center'>
