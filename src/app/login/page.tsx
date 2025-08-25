@@ -28,7 +28,7 @@ const Login= () => {
                   console.log(user)
                   if (response.data.success) {
                         console.log("success ", response.data.user)
-                        navigation.push("/")    
+                        navigation.push("/my-profile")    
                   }
             } catch (error:any) {
                   console.log(error.message)
@@ -48,7 +48,7 @@ const Login= () => {
             <div className='flex justify-center items-center h-screen'>
              <Toaster />
              <div className='h-110 w-110 bg-indigo-100 rounded px-10 py-5 '>
-               <h1 className='text-center text-2xl'>{loading ? "Processing" : "Login "}</h1>
+               <h1 className='text-center text-2xl'>{loading ? "Processing" : "Login" }</h1>
                <form onSubmit={handleLogin}  >
                   
 
