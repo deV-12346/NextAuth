@@ -8,7 +8,7 @@ export async function POST(req){
       try {
           const {email,password} = await req.json()  
           const user = await User.findOne({email})
-          if(!email){
+          if(!user){
             return NextResponse.json({
                   success:false,
                   message:"Invalid Email"

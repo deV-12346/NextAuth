@@ -7,7 +7,7 @@ connectDB()
 export async function GET(req){
     try {
       const userId = await getDataFromToken(req)
-      const user = await User.findById(userId).select("-password")
+      const user = await User.findOne({_id:userId}).select("-password")
       if(!user){
       return NextResponse.json({
             success:false,
